@@ -31,7 +31,22 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
-
+    def helper_out(n):
+        def helper_in(x):
+            nonlocal n
+            ret = x
+            while n >= 3:
+                ret = f3(f2(f1(ret)))
+                n-=3
+            if n == 0:
+                return ret
+            if n == 1:
+                ret = f1(ret)
+            if n == 2:
+                ret = f2(f1(ret))
+            return ret
+        return helper_in
+    return helper_out
 ## Lambda expressions
 
 def is_palindrome(n):
@@ -49,9 +64,9 @@ def is_palindrome(n):
     True
     """
     x, y = n, 0
-    f = lambda: _____
+    f = lambda: 10 * y + x % 10
     while x > 0:
-        x, y = _____, f()
+        x, y = x // 10, f()
     return y == n
 
 ## More recursion practice
