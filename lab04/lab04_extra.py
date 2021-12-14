@@ -16,7 +16,14 @@ def flatten(lst):
     [1, 1, 1, 1, 1, 1]
     """
     "*** YOUR CODE HERE ***"
-
+    rst = []
+    for item in lst:
+        if type(item) == list:
+            item = flatten(item)
+            rst.extend(item)
+        else:
+            rst.append(item)
+    return rst
 # Q7
 def merge(lst1, lst2):
     """Merges two sorted lists.
@@ -31,7 +38,9 @@ def merge(lst1, lst2):
     [2, 4, 5, 6, 7]
     """
     "*** YOUR CODE HERE ***"
-
+    a = lst1 + lst2
+    a.sort()
+    return a
 ######################
 ### Connect N Game ###
 ######################
